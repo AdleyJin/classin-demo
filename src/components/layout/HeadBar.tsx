@@ -4,22 +4,35 @@ import AddIcon           from "@/assets/icons/headbar-add.svg?react";
 import RefreshIcon       from "@/assets/icons/headbar-refresh.svg?react";
 import SidebarToggleIcon from "@/assets/icons/headbar-sidebar-toggle.svg?react";
 import LiveIndicatorIcon from "@/assets/icons/live-indicator.svg?react";
+import ArrowLeftIcon     from "@/assets/icons/arrow-left.svg?react";
 
 interface HeadBarProps {
   liveIsland: LiveIslandData;
+  onBack?: () => void;
 }
 
-export default function HeadBar({ liveIsland }: HeadBarProps) {
+export default function HeadBar({ liveIsland, onBack }: HeadBarProps) {
   const { totalLiveCount } = liveIsland;
 
   return (
     <div className="relative h-12 flex-shrink-0 select-none">
 
-      {/* 左：macOS 三色按钮 */}
-      <div className="absolute flex items-center gap-[8px] left-[4px] top-[18px] px-[12px]">
+      {/* 左：macOS 三色按钮 + 可选返回按钮 */}
+      <div className="absolute flex items-center gap-[8px] left-[4px] top-[8px] h-[32px] px-[12px]">
         <span className="size-3 rounded-full bg-[#ff5f57] border-[0.5px] border-black/20" />
         <span className="size-3 rounded-full bg-[#febc2e] border-[0.5px] border-black/20" />
         <span className="size-3 rounded-full bg-[#28c840] border-[0.5px] border-black/20" />
+        {onBack && (
+          <button
+            onClick={onBack}
+            className="ml-3 h-[32px] flex gap-[4px] items-center justify-center pl-[4px] pr-[8px] rounded-[8px] hover:bg-black/5 transition-colors"
+          >
+            <ArrowLeftIcon className="size-[24px] text-black" />
+            <span className="font-['PingFang_SC:Regular',sans-serif] text-[12px] text-black leading-[18px] whitespace-nowrap">
+              返回主页
+            </span>
+          </button>
+        )}
       </div>
 
       {/* 中：搜索 + 灵动岛 + 加号 */}

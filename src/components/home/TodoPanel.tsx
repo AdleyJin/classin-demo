@@ -14,7 +14,7 @@ export default function TodoPanel({ groups, totalCount }: TodoPanelProps) {
 
       {/* 固定 head bar：不随列表滚动 */}
       <div className="bg-white pt-[24px] shrink-0 w-full">
-        <div className="flex items-center justify-between px-[16px] py-[4px] w-full">
+        <div className="flex items-center justify-between px-[24px] py-[4px] w-full">
           {/* 左：标题 + 数量，baseline 对齐 */}
           <div className="flex gap-[4px] items-baseline min-w-0 flex-1">
             <span className="text-[14px] font-medium text-[#1a1a1a] leading-normal whitespace-nowrap shrink-0">
@@ -34,7 +34,7 @@ export default function TodoPanel({ groups, totalCount }: TodoPanelProps) {
 
       {/* 可滚动列表区 */}
       <ScrollArea className="flex-1 min-h-0">
-        <div className="flex flex-col gap-[12px] items-center px-[16px] pt-[24px] pb-[24px] w-full">
+        <div className="flex flex-col gap-[12px] items-center px-[24px] pt-[24px] pb-[24px] w-full">
           {groups.map((group) => (
             <GroupSection key={group.key} group={group} />
           ))}

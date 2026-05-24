@@ -4,6 +4,7 @@ import ClassCard from "./ClassCard";
 interface ClassCardGridProps {
   classes: ClassItem[];
   activeFilter: ClassFilterKey;
+  onOpenClass?: (classId: string) => void;
 }
 
 function filterClasses(classes: ClassItem[], key: ClassFilterKey): ClassItem[] {
@@ -21,7 +22,7 @@ function filterClasses(classes: ClassItem[], key: ClassFilterKey): ClassItem[] {
   }
 }
 
-export default function ClassCardGrid({ classes, activeFilter }: ClassCardGridProps) {
+export default function ClassCardGrid({ classes, activeFilter, onOpenClass }: ClassCardGridProps) {
   const filtered = filterClasses(classes, activeFilter);
 
   if (filtered.length === 0) {
@@ -43,9 +44,7 @@ export default function ClassCardGrid({ classes, activeFilter }: ClassCardGridPr
         <ClassCard
           key={cls.id}
           item={cls}
-          onClick={() => {
-            // TODO: 跳转班级详情页
-          }}
+          onClick={() => onOpenClass?.(cls.id)}
         />
       ))}
     </div>

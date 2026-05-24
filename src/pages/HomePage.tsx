@@ -11,7 +11,7 @@ import TodoPanel from "@/components/home/TodoPanel";
 import { mockHomeData } from "@/mock/home";
 import type { ClassFilterKey } from "@/lib/types";
 
-export default function HomePage() {
+export default function HomePage({ onOpenClass }: { onOpenClass?: (classId: string) => void }) {
   const {
     currentUser,
     navItems,
@@ -57,6 +57,7 @@ export default function HomePage() {
             <ClassCardGrid
               classes={classes.slice(0, 8)}
               activeFilter={activeFilter}
+              onOpenClass={onOpenClass}
             />
           </div>
         </div>
