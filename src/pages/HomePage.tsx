@@ -15,7 +15,6 @@ export default function HomePage() {
   const {
     currentUser,
     navItems,
-    quickActions,
     classFilters,
     classes,
     todoGroups,
